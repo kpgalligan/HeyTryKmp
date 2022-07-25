@@ -6,6 +6,7 @@ plugins {
     id("kotlinx-serialization")
     id("com.android.library")
     id("com.squareup.sqldelight")
+    id("co.touchlab.faktory") version "0.8.13"
 }
 
 android {
@@ -38,6 +39,11 @@ android {
         create("testDebugApi")
         create("testReleaseApi")
     }
+}
+
+faktory {
+    faktoryReadKey.set("F4559E63B6074A89B3F88CB723")
+    cocoapods()
 }
 
 kotlin {

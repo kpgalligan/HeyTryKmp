@@ -8,7 +8,6 @@
   "authors": "",
   "license": "",
   "summary": "Common library for the KaMP starter kit",
-  "vendored_frameworks": "build/cocoapods/framework/shared.framework",
   "libraries": "c++",
   "platforms": {
     "ios": "12.4"
@@ -17,12 +16,13 @@
     "KOTLIN_PROJECT_PATH": ":shared",
     "PRODUCT_MODULE_NAME": "shared"
   },
+  "vendored_frameworks": "build/cocoapods/framework/shared.framework",
   "script_phases": [
     {
       "name": "Build shared",
       "execution_position": "before_compile",
       "shell_path": "/bin/sh",
-      "script": "                if [ \"YES\" = \"$COCOAPODS_SKIP_KOTLIN_BUILD\" ]; then\n                  echo \"Skipping Gradle build task invocation due to COCOAPODS_SKIP_KOTLIN_BUILD environment variable set to \"YES\"\"\n                  exit 0\n                fi\n                set -ev\n                REPO_ROOT=\"$PODS_TARGET_SRCROOT\"\n                \"$REPO_ROOT/../gradlew\" -p \"$REPO_ROOT\" $KOTLIN_PROJECT_PATH:syncFramework                     -Pkotlin.native.cocoapods.platform=$PLATFORM_NAME                     -Pkotlin.native.cocoapods.archs=\"$ARCHS\"                     -Pkotlin.native.cocoapods.configuration=\"$CONFIGURATION\"\n"
+      "script": "                    if [ \"YES\" = \"$COCOAPODS_SKIP_KOTLIN_BUILD\" ]; then\n                      echo \"Skipping Gradle build task invocation due to COCOAPODS_SKIP_KOTLIN_BUILD environment variable set to \"YES\"\"\n                      exit 0\n                    fi\n                    set -ev\n                    REPO_ROOT=\"$PODS_TARGET_SRCROOT\"\n                    \"$REPO_ROOT/../gradlew\" -p \"$REPO_ROOT\" $KOTLIN_PROJECT_PATH:syncFramework                         -Pkotlin.native.cocoapods.platform=$PLATFORM_NAME                         -Pkotlin.native.cocoapods.archs=\"$ARCHS\"                         -Pkotlin.native.cocoapods.configuration=\"$CONFIGURATION\"\n"
     }
   ]
 }
