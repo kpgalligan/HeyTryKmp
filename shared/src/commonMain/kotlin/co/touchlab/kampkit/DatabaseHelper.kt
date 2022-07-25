@@ -26,7 +26,7 @@ class DatabaseHelper(
             .flowOn(backgroundDispatcher)
 
     suspend fun insertBreeds(breeds: List<String>) {
-        log.d { "Inserting ${breeds.size} breeds into database" }
+        log.d { "Inserting ${breeds.size} breeds into database OK" }
         dbRef.transactionWithContext(backgroundDispatcher) {
             breeds.forEach { breed ->
                 dbRef.tableQueries.insertBreed(breed)
